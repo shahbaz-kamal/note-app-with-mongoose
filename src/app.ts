@@ -28,22 +28,45 @@ const noteSchema = new Schema({
 // Define the Note model
 const Note = model("Note", noteSchema);
 
-app.post("/create-note", async (req: Request, res: Response) => {
-  const myNote = new Note({
-    title: "learning mongoose",
-    tags: {
-      label: "mongoose",
-    },
-  });
+app.post("/notes/create-note", async (req: Request, res: Response) => {
+    const body=req.body
+//approach 1: using mongoose model
+//   const myNote = new Note({
+//     title: "learning mongoose",
+//     tags: {
+//       label: "mongoose",
+//     },
+//   });
 
-  await myNote.save();
+//   await myNote.save();
 
+//approach 2: using mongoose model with request body
+const note=await Note.create(body)
   res.status(201).json({
     success: true,
     message: "Note created successfully",
-    note: myNote,
+    note: note,
   });
 });
+
+app.get("/notes",async(req:Request,res:Response)=>{
+const notes=await Note.find()
+    res.status(200).json({
+        success: true,
+        message: "Notes fetched successfully",
+        notes,
+    });
+})
+
+app.get("/notes/:noteId",async(req: Request, res: Response) => {
+    const noteId=req.params.noteId
+    const note=await Note.findById(noteId)
+    res.status(200).json({
+        success: true,
+        message: "Notes fetched successfully",
+        note,
+    });
+})
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Note app is running on port 5000");
