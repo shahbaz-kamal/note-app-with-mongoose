@@ -1,8 +1,6 @@
-import  bcrypt  from 'bcryptjs';
+import bcrypt from "bcryptjs";
 import express, { Request, Response } from "express";
 import { User } from "../models/user.model";
-
-
 
 export const userRoutes = express.Router();
 
@@ -18,19 +16,24 @@ export const userRoutes = express.Router();
 userRoutes.post("/create-user", async (req: Request, res: Response) => {
   try {
     const body = req.body;
-    console.log(body)
-
-   
- 
+    console.log(body);
 
     // const body = await CreateUserZodSchema.parseAsync(req.body);
     // console.log(body);
     // Assuming you have a User model imported
-    // const user = await User.create(body);
-    const user=new User(body)
-  const password=await  user.hashPasswords(body.password)
-  user.password=password 
-    await user.save()
+    // 
+ // Built in and custom instance method
+    // const user = new User(body);
+    // const password = await user.hashPasswords(body.password);
+    // user.password = password;
+    // await user.save();
+
+//built in and custom static method
+
+const password=await User.hashPasswords(body.password);
+body.password= password;
+const user = await User.create(body);
+
     res.status(201).json({
       success: true,
       message: "User created successfully",
