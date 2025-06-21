@@ -9,3 +9,5 @@
 // watched 17-9: Implemented user crud operations using mongoose and typescript
 // watched 18-1: Implemented validation using mongoose and typescript
 // watched 18-2: Implemented custom validation in th project using mongoose
+// watched 18-3: Implemented custom validation using zod
+// watched 18-4: Implemented empbedded documents in the project using mongoose
