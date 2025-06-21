@@ -3,3 +3,4 @@
 // watched 17-3: created a model and used it to create a document in the database
 // watched 17-4: Explored more about schemas (defining data structure inside object like syntax)
 // watched 17-5: learned about how to find all data nd single data  in the database using mongoose
+// watched 17-6: learned about how to update and delete data in the database using mongoose also used timestamps and version key features
