@@ -7,3 +7,4 @@
 // watched 17-7: implemented MVC architecture in the app and created a controller to handle requests
 // watched 17-8: implemented typescript in the app and created a controller to handle requests
 // watched 17-9: Implemented user crud operations using mongoose and typescript
+// watched 18-1: Implemented validation using mongoose and typescript
