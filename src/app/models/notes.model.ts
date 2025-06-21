@@ -18,9 +18,9 @@ const noteSchema = new Schema<INote>(
       label: { type: String, required: true },
       color: { type: String, default: "gray" },
     },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true }, // Assuming you have a User model
   },
   { versionKey: false, timestamps: true }
 );
 // Define the Note model
 export const Note = model("Note", noteSchema);
-
