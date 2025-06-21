@@ -15,3 +15,4 @@
 // watched 18-6: learned about instance methods and static methods in mongoose
 // watched 18-7: Implemented hash methods for encrypting passwords using bcrypt
 // watched 18-8: Implemented static method in the project using mongoose and typescript
+// watched 18-9: Implemented document middleware in the project using mongoose and typescript
