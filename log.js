@@ -19,3 +19,4 @@
 
 //watched 18-10: Implemented query middleware in the project using mongoose and typescript
 // watched 18-11: Learned about virtual in mongoose
+// watched 18-12: learned about sort,filter,skip and limit in mongoose

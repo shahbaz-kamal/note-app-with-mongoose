@@ -21,18 +21,18 @@ userRoutes.post("/create-user", async (req: Request, res: Response) => {
     // const body = await CreateUserZodSchema.parseAsync(req.body);
     // console.log(body);
     // Assuming you have a User model imported
-    // 
- // Built in and custom instance method
+    //
+    // Built in and custom instance method
     // const user = new User(body);
     // const password = await user.hashPasswords(body.password);
     // user.password = password;
     // await user.save();
 
-//built in and custom static method
+    //built in and custom static method
 
-// const password=await User.hashPasswords(body.password);
-// body.password= password;
-const user = await User.create(body);
+    // const password=await User.hashPasswords(body.password);
+    // body.password= password;
+    const user = await User.create(body);
 
     res.status(201).json({
       success: true,
@@ -49,7 +49,20 @@ const user = await User.create(body);
 });
 
 userRoutes.get("/", async (req: Request, res: Response) => {
-  const users = await User.find();
+  const userEmail = req.query.email;
+//   let users;
+//   if (userEmail) {
+//     users = await User.find({ email: userEmail });
+//   } else {
+//     users = await User.find();
+//   }
+//sorting
+// const users=await User.find().sort({"email":"asc"})
+
+//skipping
+// const users=await User.find().skip(5)
+//limitting
+const users=await User.find().limit(5)
   res.status(200).json({
     success: true,
     message: "Users fetched successfully",
@@ -80,8 +93,8 @@ userRoutes.patch("/:userId", async (req: Request, res: Response) => {
 
 userRoutes.delete("/:userId", async (req: Request, res: Response) => {
   const userId = req.params.userId;
-//   await User.findByIdAndDelete(userId);
-const user=await User.findOneAndDelete({ _id: userId });
+  //   await User.findByIdAndDelete(userId);
+  const user = await User.findOneAndDelete({ _id: userId });
   res.status(200).json({
     success: true,
     message: "User deleted successfully",
