@@ -19,14 +19,18 @@ userRoutes.post("/create-user", async (req: Request, res: Response) => {
   try {
     const body = req.body;
     console.log(body)
-    const password=await bcrypt.hash(body.password, 10);
-    console.log(password)
-    body.password=password
+
+   
+ 
 
     // const body = await CreateUserZodSchema.parseAsync(req.body);
     // console.log(body);
     // Assuming you have a User model imported
-    const user = await User.create(body);
+    // const user = await User.create(body);
+    const user=new User(body)
+  const password=await  user.hashPasswords(body.password)
+  user.password=password 
+    await user.save()
     res.status(201).json({
       success: true,
       message: "User created successfully",
