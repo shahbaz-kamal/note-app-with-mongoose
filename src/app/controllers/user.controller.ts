@@ -1,5 +1,8 @@
+import  bcrypt  from 'bcryptjs';
 import express, { Request, Response } from "express";
 import { User } from "../models/user.model";
+
+
 
 export const userRoutes = express.Router();
 
@@ -16,6 +19,10 @@ userRoutes.post("/create-user", async (req: Request, res: Response) => {
   try {
     const body = req.body;
     console.log(body)
+    const password=await bcrypt.hash(body.password, 10);
+    console.log(password)
+    body.password=password
+
     // const body = await CreateUserZodSchema.parseAsync(req.body);
     // console.log(body);
     // Assuming you have a User model imported

@@ -1,10 +1,13 @@
 import express, { Request, Response } from "express";
 import { Note } from "../models/notes.model";
+import bcrypt from "bcryptjs";
 
 export const notesRoutes = express.Router();
 
 notesRoutes.post("/create-note", async (req: Request, res: Response) => {
   const body = req.body;
+
+  
   //approach 1: using mongoose model
   //   const myNote = new Note({
   //     title: "learning mongoose",
@@ -16,6 +19,8 @@ notesRoutes.post("/create-note", async (req: Request, res: Response) => {
   //   await myNote.save();
 
   //approach 2: using mongoose model with request body
+
+  
   const note = await Note.create(body);
   res.status(201).json({
     success: true,

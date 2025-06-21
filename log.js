@@ -12,3 +12,4 @@
 // watched 18-3: Implemented custom validation using zod
 // watched 18-4: Implemented empbedded documents in the project using mongoose
 // watched 18-5: Implemented embedding and referencing in the project using mongoose
+// watched 18-6: learned about instance methods and static methods in mongoose
