@@ -6,3 +6,4 @@
 // watched 17-6: learned about how to update and delete data in the database using mongoose also used timestamps and version key features
 // watched 17-7: implemented MVC architecture in the app and created a controller to handle requests
 // watched 17-8: implemented typescript in the app and created a controller to handle requests
+// watched 17-9: Implemented user crud operations using mongoose and typescript

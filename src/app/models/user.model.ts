@@ -11,4 +11,4 @@ import { IUser } from "../interfaces/user.interface";
     role: {type: String, enum: ['admin', 'user'], default: 'user'}
  })
 
- const User=model("USER", userSchema);
+ export const User=model("USER", userSchema);
