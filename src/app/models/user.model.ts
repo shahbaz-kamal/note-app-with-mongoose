@@ -59,7 +59,12 @@ const userSchema = new Schema<IUser, UserStaticMethods, UserInstanceMethods>(
       type: addressSchema,
     },
   },
-  { versionKey: false, timestamps: true }
+  {
+    versionKey: false,
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
 
 userSchema.method("hashPasswords", async function (plainPassword: string) {
@@ -85,15 +90,17 @@ userSchema.pre("find", async function (next, doc) {
   next();
 });
 
-userSchema.post("save", function () {
-
-});
+userSchema.post("save", function () {});
 userSchema.post("findOneAndDelete", async function (doc, next) {
   if (doc) {
     console.log(doc);
     await Note.deleteMany({ user: doc._id });
   }
-  next()
+  next();
+});
+
+userSchema.virtual("fullName").get(function () {
+  return `${this.firstName} ${this.lastName}`;
 });
 
 export const User = model<IUser, UserStaticMethods>("User", userSchema);

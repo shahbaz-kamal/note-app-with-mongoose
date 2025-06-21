@@ -18,3 +18,4 @@
 // watched 18-9: Implemented document middleware in the project using mongoose and typescript
 
 //watched 18-10: Implemented query middleware in the project using mongoose and typescript
+// watched 18-11: Learned about virtual in mongoose
